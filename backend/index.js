@@ -1,5 +1,5 @@
 const express = require("express");
-const { createTodo, updateTodo } = require("./types");
+const { createTodo, updateTodo, deleteTodo } = require("./types");
 const { todo } = require("./db")
 const app = express();
 const cors = require("cors");
@@ -53,6 +53,28 @@ app.put("/completed", async function(req, res) {
     })
     res.json({
         msg: "Todo marked as completed"
+    })
+})
+
+app.delete("/deletetodo", async function(req, res) {
+    const deletePayload = req.body;
+    console.log(deletePayload);
+    const parsedPayload = deleteTodo.safeParse(deletePayload);
+    if (!parsedPayload.success) {
+        res.status(400).json({
+            msg: "Invalid Todo",
+        })
+        return;
+    }
+    const result = await todo.findByIdAndDelete(req.body.id);
+    if (!result) {
+        return res.status(404).json({
+            msg: "Todo dosen't exist"
+        })
+    }
+    console.log("Deleted")
+    res.json({
+        msg: "Todo deleted successfully"
     })
 })
 

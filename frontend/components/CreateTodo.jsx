@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 // import { modcount } from "../src/App";
 
 export function CreateTodo() {
@@ -15,11 +16,13 @@ export function CreateTodo() {
         <input type="text" placeholder="Todo Work" value={title} onChange={function(e) {
             const value = e.target.value;
             setTitle(e.target.value);
-        }}></input> <br />
+        }}
+        style={{width: '75%'}}></input> <br />
         <textarea type="text" placeholder="Work Description" value={description} onChange={function(e) {
             const value = e.target.value;
             setDescription(e.target.value);
-        }}></textarea> <br />
+        }}
+        style={{width: '65%'}}></textarea> <br />
         <button onClick={async () => {
             // modcount += 1;
             await fetch("http://localhost:3000/todo", {
@@ -41,7 +44,7 @@ export function CreateTodo() {
                 console.error("Error", error);
             });
 
-        }}>+</button>
+        }}>Add +</button>
         <button onClick={ClearButton}>Clear</button>
     </div>
 }
