@@ -4,14 +4,21 @@ import { useState } from "react";
 export function CreateTodo() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    // const [titletext, setTitletext] = useState("");
+    // const [desctext, setDesctext] = useState("");
+
+    function ClearButton() {
+        setTitle("");
+        setDescription("");
+    }
 
     return <div className="borderc">
         <h1>Add a Todo !</h1>
-        <input type="text" placeholder="Todo Work" onChange={function(e) {
+        <input type="text" placeholder="Todo Work" value={title} onChange={function(e) {
             const value = e.target.value;
             setTitle(e.target.value);
         }}></input> <br />
-        <textarea type="text" placeholder="Work Description" onChange={function(e) {
+        <textarea type="text" placeholder="Work Description" value={description} onChange={function(e) {
             const value = e.target.value;
             setDescription(e.target.value);
         }}></textarea> <br />
@@ -37,6 +44,6 @@ export function CreateTodo() {
             });
 
         }}>+</button>
-        <button>Clear</button>
+        <button onClick={ClearButton}>Clear</button>
     </div>
 }
