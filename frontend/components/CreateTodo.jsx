@@ -4,8 +4,6 @@ import { useState } from "react";
 export function CreateTodo() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    // const [titletext, setTitletext] = useState("");
-    // const [desctext, setDesctext] = useState("");
 
     function ClearButton() {
         setTitle("");
