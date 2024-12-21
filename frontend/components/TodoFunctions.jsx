@@ -12,3 +12,4 @@ export const deleteButton = async(uid) => {
     });
     window.location.reload()
 }
+

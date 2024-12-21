@@ -51,8 +51,28 @@ app.put("/completed", async function(req, res) {
     await todo.findByIdAndUpdate(req.body.id,{
         $set:{completed:true}
     })
+    console.log("Completed")
     res.json({
         msg: "Todo marked as completed"
+    })
+})
+
+app.put("/redo", async function(req, res) {
+    const updatePayload = req.body;
+    console.log(updatePayload);
+    const parsedPayload = updateTodo.safeParse(updatePayload);
+    if (!parsedPayload.success) {
+        res.status(411).json({
+            msg: "You sent the wrong inputs",
+        })
+        return;
+    }
+    await todo.findByIdAndUpdate(req.body.id,{
+        $set:{completed:false}
+    })
+    console.log("Redo")
+    res.json({
+        msg: "Todo for Redo"
     })
 })
 

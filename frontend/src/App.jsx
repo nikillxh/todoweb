@@ -4,7 +4,6 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { CreateTodo } from '../components/CreateTodo'
 import { Todos } from '../components/Todos'
-// export const modcount = 0;
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -22,7 +21,6 @@ function App() {
   return (
     <div>
       <h1>Total Todos : {todos.length}</h1>
-      <br></br>
       <CreateTodo></CreateTodo>
       <Todos todos={todos}></Todos>
     </div>
